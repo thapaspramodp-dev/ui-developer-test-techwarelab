@@ -24,7 +24,7 @@ export default function Footer() {
             loop
             playsInline
             aria-hidden="true"
-            src="/ui-developer-test-techwarelab/footer_video.mp4"
+            src="/footer_video.mp4"
             className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
             style={{ mixBlendMode: "screen", opacity: 0.45 }}
           />
