@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Button from "@/components/ui/Button"
 import { NAV_LINKS } from "@/constants/data"
+import { assetPath } from "@/lib/utils"
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("hero")
@@ -58,7 +59,7 @@ export default function Navbar() {
         <div className="w-full flex items-center justify-between">
           {/* Logo */}
           <a href="#hero" onClick={(e) => handleNavClick(e, "#hero")} className="flex items-center gap-2">
-            <Image src="/logo.png" width={32} height={32} alt="Logo" />
+            <Image src={assetPath("/logo.png")} width={32} height={32} alt="Logo" />
           </a>
 
           {/* Desktop Nav Links */}

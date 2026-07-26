@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useRef, useState } from "react"
+import { assetPath } from "@/lib/utils"
 
 export default function Footer() {
   const footerRef = useRef(null)
@@ -24,7 +25,7 @@ export default function Footer() {
             loop
             playsInline
             aria-hidden="true"
-            src="/footer_video.mp4"
+            src={assetPath("/footer_video.mp4")}
             className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
             style={{ mixBlendMode: "screen", opacity: 0.45 }}
           />

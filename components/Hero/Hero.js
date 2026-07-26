@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react"
 import Image from "next/image"
 import Button from "@/components/ui/Button"
 import FolderShape from "@/components/ui/FolderShape"
+import { assetPath } from "@/lib/utils"
 
 const REVEAL_PARTS = [
   {
@@ -85,7 +86,7 @@ export default function Hero() {
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             <div className="absolute right-0 top-0 w-[58vw] max-w-[850px] h-screen opacity-95">
               <Image
-                src="/hero_gradient.png"
+                src={assetPath("/hero_gradient.png")}
                 fill
                 alt=""
                 style={{ objectFit: "contain", objectPosition: "right top" }}
@@ -205,7 +206,7 @@ export default function Hero() {
 
               {/* Phone image — enlarged */}
               <Image
-                src="/iPhone 14 Pro.png"
+                src={assetPath("/iPhone 14 Pro.png")}
                 width={300}
                 height={600}
                 alt="Mobile app"

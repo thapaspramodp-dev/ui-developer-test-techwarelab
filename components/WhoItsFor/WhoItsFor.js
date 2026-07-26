@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import { motion } from "motion/react"
 import { WHO_BADGES } from "@/constants/data"
+import { assetPath } from "@/lib/utils"
 
 // Badge icons mapping matching wireframe screenshot
 function BadgeIcon({ type }) {
@@ -204,7 +205,7 @@ export default function WhoItsFor() {
 
             {/* Small center logo square badge — frosted glass */}
             <div className="relative z-10 w-14 h-14 md:w-18 md:h-18 rounded-[20px] md:rounded-[24px] bg-white/45 backdrop-blur-xl border border-white/80 shadow-md flex items-center justify-center">
-              <Image src="/logo.png" width={32} height={32} alt="Logo" />
+              <Image src={assetPath("/logo.png")} width={32} height={32} alt="Logo" />
             </div>
           </motion.div>
 
