@@ -1,26 +1,119 @@
+/* ─── Google Fonts — must be FIRST ────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap');
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Brand Tokens (Tailwind v4 — defined via @theme) ─────────────────── */
+@theme {
+  /* Colors */
+  --color-navy:        #0A192F;
+  --color-deep-blue:   #002966;
+  --color-amber:       #E88F00;
+  --color-amber-light: #F7C948;
+  --color-cream:       #F8E9D2;
+  --color-ink:         #171717;
+  --color-bg:          #F7F7F7;
+
+  /* Fonts */
+  --font-outfit: 'Outfit', sans-serif;
+  --font-serif:  'PT Serif', serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Base Reset ───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Ensure buttons don't get padding stripped by reset */
+button {
+  font-family: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Outfit', sans-serif;
+  background-color: #F7F7F7;
+  color: #171717;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Keyframe Animations ──────────────────────────────────────────────── */
+
+/* Gradient blob floating/dancing in Hero */
+@keyframes blobFloat {
+  0%   { transform: translate(0px, 0px) scale(1);       opacity: 0.75; }
+  25%  { transform: translate(25px, -20px) scale(1.06); opacity: 0.9;  }
+  50%  { transform: translate(-15px, 15px) scale(0.97); opacity: 0.8;  }
+  75%  { transform: translate(10px, -10px) scale(1.03); opacity: 0.85; }
+  100% { transform: translate(0px, 0px) scale(1);       opacity: 0.75; }
+}
+
+/* Orbiting badges — full clockwise rotation */
+@keyframes orbitRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Counter-rotate badges so they stay upright during orbit */
+@keyframes badgeUpright {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+/* Subtle pulse on the concentric rings */
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.15; transform: scale(1);    }
+  50%       { opacity: 0.25; transform: scale(1.03); }
+}
+
+/* Gradient text shimmer */
+@keyframes gradientShimmer {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+
+/* ─── Utility Classes for Animations ──────────────────────────────────── */
+
+.animate-blob {
+  animation: blobFloat 8s ease-in-out infinite;
+}
+
+.animate-orbit {
+  animation: orbitRotate 18s linear infinite;
+}
+
+.animate-badge-upright {
+  animation: badgeUpright 18s linear infinite;
+}
+
+.animate-ring-pulse {
+  animation: ringPulse 4s ease-in-out infinite;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #E88F00, #F7C948, #E88F00);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShimmer 4s ease infinite;
+}
+
+/* ─── Reduced Motion ───────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob,
+  .animate-orbit,
+  .animate-badge-upright,
+  .animate-ring-pulse {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
 }
